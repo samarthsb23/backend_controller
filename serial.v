@@ -1,7 +1,7 @@
 module serial_comm (
     input i_sclk,
     input i_sdin,
-    input i_reset, // this will be an active low synchronous reset
+    input i_reset, // this will be an active low reset
     output reg [1:0] o_gainA1,
     output reg [2:0] o_gainA2,
     output reg ready_serial
