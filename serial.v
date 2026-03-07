@@ -11,7 +11,7 @@ reg [4:0] d;
 reg [2:0] count;
 reg stop, final_stop;
 
-always @(posedge i_sclk) begin
+always @(posedge i_sclk or negedge i_reset) begin //asynch reset
 
     if(!i_reset) begin 
         d <= 0;
@@ -35,7 +35,7 @@ always @(posedge i_sclk) begin
         final_stop <= 1; // this will now ensure that gains are assigned only once
     end
 
-    else begin
+    else if (!stop) begin 
 
         // Sample the input
         d[count] <= i_sdin;
